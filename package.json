@@ -4,7 +4,7 @@
   "description": "wrapper around forecast.io weather API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "DEBUG= ./node_modules/.bin/mocha -R spec -t 5000"
   },
   "dependencies": {
     "debug": "0.7.2",
