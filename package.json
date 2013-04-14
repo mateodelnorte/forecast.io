@@ -1,0 +1,23 @@
+{
+  "name": "forecast.io",
+  "version": "0.0.0",
+  "description": "wrapper around forecast.io weather API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "debug": "0.7.2",
+    "lodash": "1.1.1",
+    "request": "2.16.6"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "sinon": "*",
+    "should": "*"
+  },
+  "keywords": [],
+  "repository": "",
+  "author": "Matt Walters",
+  "license": "BSD"
+}
