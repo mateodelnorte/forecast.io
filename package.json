@@ -1,6 +1,6 @@
 {
   "name": "forecast.io",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "wrapper around forecast.io weather API",
   "main": "index.js",
   "scripts": {
