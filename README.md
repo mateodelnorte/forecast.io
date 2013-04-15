@@ -7,15 +7,19 @@ How to use it:
 
 1. Require forecast.io
 
-  var Forecast = require('forecast.io');
+```
+var Forecast = require('forecast.io');
+```
 
 2. Instantiate an instance of Forecast. You'll need to provide options specifying your forecast.io API Key. 
 
-  var options = {
-    APIKey: process.env.FORECAST_API_KEY
-  },
-  forecast = new Forecast(options);
-  
+```
+var options = {
+  APIKey: process.env.FORECAST_API_KEY
+},
+forecast = new Forecast(options);
+```
+
 3. Make a call to the API using the get or getAtTime methods. 
 
   The get function calls to the https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE endpoint. 
