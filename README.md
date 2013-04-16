@@ -35,6 +35,7 @@ forecast.get(latitude, longitude, function (err, res, data) {
   getAtTime calls the similar endpoint with time specified: https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE,TIME.
   
 ```
+var time = new Date().setDate(0); // lets use an arbitrary date
 forecast.getAtTime(latitude, longitude, time, function (err, res, data) {
   if (err) throw err;
   log('res: ' + util.inspect(res));
@@ -47,7 +48,6 @@ Additional:
 1. Both get and getAtTime functions accept optional parameters to accomodate the optional query string params available for the forecast API calls. The following call is, for instance, possible and will return only the current property and its child properties: 
 
 ```
-var time = new Date().setDate(0); // lets use an arbitrary date
 var options = {
   exclude: 'minutely,hourly,daily,flags,alerts'
 };
