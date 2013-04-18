@@ -1,11 +1,12 @@
 {
   "name": "forecast.io",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "wrapper around forecast.io weather API",
   "main": "index.js",
   "scripts": {
     "test": "DEBUG= ./node_modules/.bin/mocha -R spec -t 5000"
   },
+  "main": "./lib/index.js",
   "dependencies": {
     "debug": "0.7.2",
     "lodash": "1.1.1",
@@ -21,6 +22,12 @@
     "url": "git@github.com:mateodelnorte/forecast.io.git"
   },
   "homepage": "https://github.com/mateodelnorte/forecast.io",
-  "author": "Matt Walters",
-  "license": "BSD"
+  "author": {
+    "name": "Matt Walters"
+  },
+  "license": "BSD",
+  "readme": "forecast.io\n===========\n\nA simple wrapper for the awesome forecast.io API: https://developer.forecast.io/docs/v2\n\nHow to use it: \n\n1. Require forecast.io\n\n```\nvar Forecast = require('forecast.io');\n```\n\n2. Instantiate an instance of Forecast. You'll need to provide options specifying your forecast.io API Key. \n\n```\nvar options = {\n  APIKey: process.env.FORECAST_API_KEY\n},\nforecast = new Forecast(options);\n```\n\n3. Make a call to the API using the get or getAtTime methods. \n\n  The get function calls to the https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE endpoint. \n\n```\nforecast.get(latitude, longitude, function (err, res, data) {\n  if (err) throw err;\n  log('res: ' + util.inspect(res));\n  log('data: ' + util.inspect(data));\n});\n```\n  \n  getAtTime calls the similar endpoint with time specified: https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE,TIME.\n  \n```\nvar time = new Date().setDate(0); // lets use an arbitrary date\nforecast.getAtTime(latitude, longitude, time, function (err, res, data) {\n  if (err) throw err;\n  log('res: ' + util.inspect(res));\n  log('data: ' + util.inspect(data));\n});\n```\n  \nAdditional: \n\n1. Both get and getAtTime functions accept optional parameters to accomodate the optional query string params available for the forecast API calls. The following call is, for instance, possible and will return only the current property and its child properties: \n\n```\nvar options = {\n  exclude: 'minutely,hourly,daily,flags,alerts'\n};\nforecast.get(latitude, longitude, options, function (err, res, data) {\n  if (err) throw err;\n  log('res: ' + util.inspect(res));\n  log('data: ' + util.inspect(data));\n});\n```\n",
+  "readmeFilename": "README.md",
+  "_id": "forecast.io@0.0.2",
+  "_from": "forecast.io@"
 }
