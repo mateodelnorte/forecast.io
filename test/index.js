@@ -31,18 +31,7 @@ describe('Forecast', function () {
         done();
       });
     });
-    it('should return data for a latitude and longitude and time', function (done) {
-      var time = new Date().setDate(0); // lets use an arbitrary date
-      forecast.getAtTime(latitude, longitude, time, function (err, res, data) {
-        if (err) throw err;
-        log('res: ' + util.inspect(res));
-        log('data: ' + util.inspect(data));
-        res.should.not.equal.null;
-        data.should.not.equal.null;
-        done();
-      });
-    });
-    it('should be able to specify blocks to exclude', function (done) {
+    it('should be able to specify blocks to exclude via options param', function (done) {
       var time = new Date().setDate(0); // lets use an arbitrary date
       var options = {
         exclude: 'minutely,hourly,daily,flags,alerts'
@@ -59,6 +48,40 @@ describe('Forecast', function () {
         data.should.not.have.property('hourly');
         data.should.not.have.property('daily');
         data.should.not.have.property('flags');
+        done();
+      });
+    });
+    it('should be able to specify multiple options via options param', function (done) {
+      var time = new Date().setDate(0); // lets use an arbitrary date
+      var options = {
+        exclude: 'minutely,hourly,daily,flags,alerts',
+        units: 'si'
+      };
+      forecast.get(latitude, longitude, options, function (err, res, data) {
+        if (err) throw err;
+        log('res: ' + util.inspect(res));
+        log('data: ' + util.inspect(data));
+        res.should.not.equal.null;
+        data.should.not.equal.null;
+        data.should.not.have.property('alerts');
+        data.should.have.property('currently');
+        data.should.not.have.property('minutely');
+        data.should.not.have.property('hourly');
+        data.should.not.have.property('daily');
+        data.should.not.have.property('flags');
+        done();
+      });
+    });
+  });
+  describe('#getAtTime', function () {
+    it('should return data for a latitude and longitude and time', function (done) {
+      var time = new Date().setDate(0); // lets use an arbitrary date
+      forecast.getAtTime(latitude, longitude, time, function (err, res, data) {
+        if (err) throw err;
+        log('res: ' + util.inspect(res));
+        log('data: ' + util.inspect(data));
+        res.should.not.equal.null;
+        data.should.not.equal.null;
         done();
       });
     });
