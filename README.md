@@ -5,13 +5,13 @@ A simple wrapper for the awesome forecast.io API: https://developer.forecast.io/
 
 How to use it:
 
-1. Require forecast.io
+Require forecast.io
 
 ```
 var Forecast = require('forecast.io');
 ```
 
-2. Instantiate an instance of Forecast. You'll need to provide options specifying your forecast.io API Key.
+Instantiate an instance of Forecast. You'll need to provide options specifying your forecast.io API Key.
 
 ```
 var options = {
@@ -20,7 +20,7 @@ var options = {
 forecast = new Forecast(options);
 ```
 
-3. Make a call to the API using the get or getAtTime methods.
+Make a call to the API using the get or getAtTime methods.
 
   The get function calls to the https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE endpoint.
 
@@ -45,7 +45,7 @@ forecast.getAtTime(latitude, longitude, time, function (err, res, data) {
 
 Additional:
 
-1. Both get and getAtTime functions accept optional parameters to accommodate the optional query string params available for the forecast API calls. The following call is, for instance, possible and will return only the current property and its child properties:
+Both get and getAtTime functions accept optional parameters to accommodate the optional query string params available for the forecast API calls. The following call is, for instance, possible and will return only the current property and its child properties:
 
 ```
 var options = {
