@@ -1,7 +1,6 @@
 'use strict';
 
 var log = require('debug')('forecast.io'),
-    sinon = require('sinon'),
     util = require('util');
 
 require('should');
