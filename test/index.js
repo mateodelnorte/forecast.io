@@ -5,7 +5,7 @@ var log = require('debug')('forecast.io'),
 
 require('should');
 
-var Forecast = require('../lib/index');
+var Forecast = require('../index');
 
 var options = {
   APIKey: process.env.FORECAST_API_KEY
