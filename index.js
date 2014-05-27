@@ -57,14 +57,13 @@ Forecast.prototype.get = function get (latitude, longitude, options, callback) {
 
   request.get({uri:url, timeout:this.requestTimeout}, function (err, res, data) {
     if (err) {
-      callback(err);
+        callback(err);
+    } else if(res.headers['content-type'] === 'application/json') {
+        callback(null, res, JSON.parse(data));
+    } else if(res.statusCode === 200) {
+        callback(null, res, data);
     } else {
-      try {
-        data = JSON.parse(data);
-      } catch(e) {
-        return callback(e, res, data);
-      }
-      callback(null, res, data);
+        callback(new ForecastError(data), res, data);
     }
   });
 };
