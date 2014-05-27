@@ -1,7 +1,7 @@
 var log = require('debug')('forecast.io'),
     request = require('request'),
     util = require('util'),
-    _ = require('lodash');
+    qs = require('querystring');
 
 function ForecastError (errors) {
   Error.captureStackTrace(this, ForecastError);
@@ -30,11 +30,7 @@ Forecast.prototype.buildUrl = function buildUrl (latitude, longitude, time, opti
     delete time;
  }
 
-  var query = _.reduce(options, function (result, val, key) {
-    if (result) return result + '&' + key + '=' + val;
-    return result + '?' + key + '=' + val;
-  }, '');
-
+  var query = '?' + qs.stringify(options);
   var url = this.url + latitude + ',' + longitude;
 
   if (typeof time === 'number') {
