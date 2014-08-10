@@ -37,7 +37,9 @@ forecast.get(latitude, longitude, function (err, res, data) {
 
 ```
 var time = new Date().setDate(0); // lets use an arbitrary date
-forecast.getAtTime(latitude, longitude, time, function (err, res, data) {
+var unixTime = Math.floor(time.getTime()/1000); //Get the UNIX timestamp needed for the api.
+
+forecast.getAtTime(latitude, longitude, unixTime, function (err, res, data) {
   if (err) throw err;
   log('res: ' + util.inspect(res));
   log('data: ' + util.inspect(data));
