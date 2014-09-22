@@ -42,7 +42,7 @@ Forecast.prototype.buildUrl = function buildUrl (latitude, longitude, time, opti
 
   url += "lang="+this.lang;
 
-  console.log('get ' + url);
+  log('get ' + url);
   return url;
 }
 
