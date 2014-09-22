@@ -20,6 +20,7 @@ function Forecast (options) {
   this.APIKey = options.APIKey;
   this.requestTimeout = options.timeout || 2500
   this.url = 'https://api.forecast.io/forecast/' + options.APIKey + '/';
+  this.lang = options.lang || 'en'
 }
 
 
@@ -39,7 +40,9 @@ Forecast.prototype.buildUrl = function buildUrl (latitude, longitude, time, opti
 
   url += query;
 
-  log('get ' + url);
+  url += "lang="+this.lang;
+
+  console.log('get ' + url);
   return url;
 }
 
