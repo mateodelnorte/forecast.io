@@ -33,7 +33,7 @@ Forecast.prototype.buildUrl = function buildUrl (latitude, longitude, time, opti
   var query = '?' + qs.stringify(options);
   var url = this.url + latitude + ',' + longitude;
 
-  if (typeof time === 'number') {
+  if ((typeof time === 'number')||(typeof time === 'string') {
     url += ',' + time;
   }
 
