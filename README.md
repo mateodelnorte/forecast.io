@@ -11,12 +11,13 @@ Require forecast.io
 var Forecast = require('forecast.io');
 ```
 
-Instantiate an instance of Forecast. You'll need to provide options specifying your forecast.io API Key. You may also add a `timeout` option, which defaults to 2500 if not provided.
+Instantiate an instance of Forecast. You'll need to provide options specifying your forecast.io API Key. You may also add a `timeout` option, which defaults to 2500 if not provided. You can also add a `lang` option, which defaults to english if not provided.
 
 ```
 var options = {
   APIKey: process.env.FORECAST_API_KEY,
-  timeout: 1000
+  timeout: 1000,
+  lang: 'de'
 },
 forecast = new Forecast(options);
 ```
