@@ -19,7 +19,7 @@ function Forecast (options) {
   if ( ! options.APIKey) throw new ForecastError('APIKey must be set on Forecast options');
   this.APIKey = options.APIKey;
   this.requestTimeout = options.timeout || 2500
-  this.url = 'https://api.forecast.io/forecast/' + options.APIKey + '/';
+  this.url = 'https://api.darksky.net/forecast/' + options.APIKey + '/';
 }
 
 
