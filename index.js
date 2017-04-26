@@ -75,9 +75,12 @@ Forecast.prototype.getAtTime = function getAtTime (latitude, longitude, time, op
   request.get({uri:url, timeout:this.requestTimeout}, function (err, res, data) {
     if (err) {
       callback(err);
-    } else {
-      data = JSON.parse(data);
+    } else if(res.headers['content-type'].indexOf('application/json') > -1) {
+      callback(null, res, JSON.parse(data));
+    } else if(res.statusCode === 200) {
       callback(null, res, data);
+    } else {
+      callback(new ForecastError(data), res, data);
     }
   });
 };
