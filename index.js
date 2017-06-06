@@ -51,7 +51,7 @@ Forecast.prototype.get = function get (latitude, longitude, options, callback) {
 
   var url = this.buildUrl(latitude, longitude, options);
 
-  request.get({uri:url, timeout:this.requestTimeout}, function (err, res, data) {
+  request.get({uri:url, timeout:this.requestTimeout, gzip:true}, function (err, res, data) {
     if (err) {
       callback(err);
     } else if(res.headers['content-type'].indexOf('application/json') > -1) {
@@ -72,7 +72,7 @@ Forecast.prototype.getAtTime = function getAtTime (latitude, longitude, time, op
 
   var url = this.buildUrl(latitude, longitude, time, options);
 
-  request.get({uri:url, timeout:this.requestTimeout}, function (err, res, data) {
+  request.get({uri:url, timeout:this.requestTimeout, gzip:true}, function (err, res, data) {
     if (err) {
       callback(err);
     } else {
