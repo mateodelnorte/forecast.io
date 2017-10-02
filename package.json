@@ -7,7 +7,7 @@
     "test": "DEBUG= ./node_modules/.bin/mocha -R spec -t 5000"
   },
   "dependencies": {
-    "debug": "^0.7.2",
+    "debug": "^3.1.0",
     "request": "^2.16.6"
   },
   "devDependencies": {
