@@ -55,7 +55,12 @@ Forecast.prototype.get = function get (latitude, longitude, options, callback) {
     if (err) {
       callback(err);
     } else if(res.headers['content-type'].indexOf('application/json') > -1) {
-      callback(null, res, JSON.parse(data));
+      try{
+        data = JSON.parse(data);
+      } catch (parseEr) {
+        return callback(parseEr);
+      };
+      callback(null, res, data);
     } else if(res.statusCode === 200) {
       callback(null, res, data);
     } else {
@@ -76,7 +81,11 @@ Forecast.prototype.getAtTime = function getAtTime (latitude, longitude, time, op
     if (err) {
       callback(err);
     } else {
-      data = JSON.parse(data);
+      try {
+        data = JSON.parse(data);
+      } catch(parseEr) {
+        return callback(parseEr);
+      };
       callback(null, res, data);
     }
   });
